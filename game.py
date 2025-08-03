@@ -3,32 +3,41 @@ from random import choice
 
 def game():
     valid_choices = ['scissor', 'paper', 'rock']
+    winnerComputer = 0
+    winnerHuman = 0
 
-    while True:
-        choice_input = input(
-            "Choose one (scissor, paper, rock): ").strip().lower()
-        if choice_input in valid_choices:
-            print(f"You chose: {choice_input}")
-            break
-        else:
-            print("Invalid choice. Please try again.")
+    while winnerComputer < 3 and winnerHuman < 3:
 
-    random_choice = choice(valid_choices)
-    print(f"Computer chose: {random_choice}")
+        while True:
+            player = input(
+                "Choose one (scissor, paper, rock): ").strip().lower()
+            if player in valid_choices:
+                print(f"You chose: {player}")
+                break
+            else:
+                print("Invalid choice. Please try again.")
 
-    def winner(player, computer):
+        computer = choice(valid_choices)
+        print(f"Computer chose: {computer}")
+
         if player == computer:
-            return "It's a tie"
+            print("It's a tie!")
         elif (player == "rock" and computer == "scissor") or \
              (player == "scissor" and computer == "paper") or \
              (player == "paper" and computer == "rock"):
-            return "You win"
+            winnerHuman += 1
+            print("You win this round!")
         else:
-            return "Computer wins"
+            winnerComputer += 1
+            print("Computer wins this round!")
 
-    # Call and print the result
-    result = winner(choice_input, random_choice)
-    print(result)
+        print(f"Score — You: {winnerHuman} | Computer: {winnerComputer}")
+        print("-" * 30)
+
+    if winnerHuman == 3:
+        print("🎉 You won the game!")
+    else:
+        print("💻 Computer won the game!")
 
 
 game()
