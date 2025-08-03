@@ -26,7 +26,7 @@ def main():
 
     name = input("Enter your username: ")
     while True :
-        password = getpass("Enter a password with 3 Char, 3 numbers and one Maj :")
+        password = getpass.getpass("Enter a password with 3 Char, 3 numbers and one Maj :")
         if validPassword(password) :
             print("Password Valid")
             break
@@ -37,7 +37,7 @@ def main():
 
     while True:
         connectName = input("Enter your username again to connect: ")
-        correctPassword = input("Enter your password again to connect: ")
+        correctPassword = getpass.getpass("Enter your password again to connect: ")
         
         if connectName == name and correctPassword == password:
             print("✅ Access granted!")
