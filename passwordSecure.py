@@ -1,3 +1,5 @@
+import getpass
+
 
 def validPassword (password):
     hasUpper = False 
@@ -24,13 +26,12 @@ def main():
 
     name = input("Enter your username: ")
     while True :
-        password = input("Enter a password with 3 Char, 3 numbers and one Maj :")
+        password = getpass("Enter a password with 3 Char, 3 numbers and one Maj :")
         if validPassword(password) :
             print("Password Valid")
             break
         else :
             print("The password is not valid follow the instruction")
-
 
 
 
