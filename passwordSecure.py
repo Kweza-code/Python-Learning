@@ -1,49 +1,47 @@
 import getpass
 
 
-def validPassword (password):
-    hasUpper = False 
-    specialChar = 0
+def valid_password(password):
+    has_upper = False
+    special_char = 0
     number = 0
 
-
-    for char in password :
-        if char.isupper() :
-            hasUpper = True
-        if char in "!@#$%^&*()_+" :
-            specialChar += 1
-        if char.isdigit() :
+    for char in password:
+        if char.isupper():
+            has_upper = True
+        if char in "!@#$%^&*()_+":
+            special_char += 1
+        if char.isdigit():
             number += 1
-    
-    if hasUpper and specialChar >= 3 and number >= 3:
+
+    if has_upper and special_char >= 3 and number >= 3:
         return True
-    else : 
+    else:
         return False
 
 
 def main():
-
-
     name = input("Enter your username: ")
-    while True :
-        password = getpass.getpass("Enter a password with 3 Char, 3 numbers and one Maj :")
-        if validPassword(password) :
-            print("Password Valid")
-            break
-        else :
-            print("The password is not valid follow the instruction")
-
-
 
     while True:
-        connectName = input("Enter your username again to connect: ")
-        correctPassword = getpass.getpass("Enter your password again to connect: ")
-        
-        if connectName == name and correctPassword == password:
+        password = getpass.getpass(
+            "Enter a password with 3 special characters, 3 numbers, and one uppercase letter: "
+        )
+        if valid_password(password):
+            print("Password Valid")
+            break
+        else:
+            print("The password is not valid. Please follow the instructions.")
+
+    while True:
+        connect_name = input("Enter your username again to connect: ")
+        correct_password = getpass.getpass("Enter your password again to connect: ")
+
+        if connect_name == name and correct_password == password:
             print("✅ Access granted!")
             break
         else:
             print("❌ Incorrect login. Please try again.")
 
-main()
 
+main()
